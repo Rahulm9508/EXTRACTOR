@@ -140,6 +140,7 @@ async def appex_v3_txt(app, message, api, name):
     scraper = cloudscraper.create_scraper()
     res = scraper.post(raw_url, data=info, headers=hdr).content
     output = json.loads(res)
+    print("output:", output)  # add this line before the error occurs
     userid = output.get("data", {}).get("userid")
     token = output["data"]["token"]
     hdr1 = {
