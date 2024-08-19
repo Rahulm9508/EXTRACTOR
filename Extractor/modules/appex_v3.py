@@ -44,6 +44,8 @@ async def appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, name, 
                     for data in topicid:
                         type = data.get('material_type')
                         tid = data.get("Title")
+                        cool2 = ""
+                        vs = ""
                         if type == 'VIDEO':
                             if data.get('pdf_link'):
                                 plink = data.get('pdf_link').split(':')
@@ -58,7 +60,7 @@ async def appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, name, 
                                 dlink = next((link['path'] for link in data.get('download_links', []) if link.get('quality') == "720p"), None)
                                 if dlink:
                                     parts = dlink.split(':')
-                                    if len(parts) == 2:   
+                                    if len(parts) == 2:
                                         encoded_part, encrypted_part = parts
                                         b = decrypt_data(encoded_part)
                                         cool2 = f"{b}"
@@ -85,6 +87,7 @@ async def appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, name, 
                                     print(f"Missing video_id for {tid}")
                             else:
                                 print("Unknown ytFlag value")
+
                             msg = f"{tid} : {cool2}\n{tid} : {vs}\n"
                             vj += msg
 
@@ -96,9 +99,10 @@ async def appex_down(app, message, hdr1, api, raw_text2, fuk, batch_name, name, 
                                 vs = f"{bp}"
                                 msg = f"{tid} : {vs}\n"
                                 vj += msg
+
             except Exception as e:
-                print(str(e))  
-  
+                print(str(e))
+
             vt += vj
 
         mm = batch_name
