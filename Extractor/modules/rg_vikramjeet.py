@@ -105,4 +105,4 @@ async def rgvikram_down(app, message, hdr1, api, raw_text2, fuk, batch_name, nam
                                 else:
                                     print(f"Missing video_id for {tid}")
                             else:
-                                print("Unknown ytFlag value
+                                print("Unknown ytFlag value")
